@@ -1,19 +1,19 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []  # nossa pilha
-        pair = {')': '(', ']': '[', '}': '{'}  # mapa de fechamento → abertura
+        stack = []
+        pair = {')': '(', ']': '[', '}': '{'}
 
         for char in s:
             if char in "({[":
-                stack.append(char)  # empilha aberturas
+                stack.append(char)  
             elif char in ")}]":
                 if not stack or stack[-1] != pair[char]:
-                    # se a pilha está vazia ou o topo não bate com o que precisa fechar
                     return False
-                stack.pop()  # remove o par correspondente
+                stack.pop() 
 
-        # se a pilha está vazia no final, está tudo certo
         return len(stack) == 0
+
+sol = Solution()
+print(sol.isValid("((()))"))
     
 
-## entender como funciona a stack nesse leetcode!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
